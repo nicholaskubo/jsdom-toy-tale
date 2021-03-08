@@ -115,6 +115,6 @@ function deleteToy(id) {
     method: "DELETE"
   })
   .then(response => response.json())
-  .then(() => {document.getElementById(id).remove()})
-}
+  .then(() => {document.getElementById(id).remove()}
+})
 

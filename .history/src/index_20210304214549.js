@@ -31,23 +31,17 @@ function postToyData(toys) {
   const name = document.createElement("h2")
   const image = document.createElement("img")
   image.className = "toy-avatar"
-  const p = document.createElement("p")
+  const likes = document.createElement("likes")
   const likeButton = document.createElement("button")
-  const deleteButton = document.createElement("button")
-  deleteButton.className ="like-btn"
   likeButton.className ="like-btn"
   image.src = toys.image 
   name.textContent = toys.name
-  deleteButton.textContent = "Delete"
-  p.textContent = toys.likes
+  likes.textContent = toys.likes
   likeButton.textContent = "Like <3"
-  card.append(name, image, p, likeButton, deleteButton)
+  card.append(name, image, likes, likeButton)
   container.appendChild(card)
 
-  likeButton.addEventListener("click", handleLike) 
-  deleteButton.addEventListener("click", deleteToy)
-
-}
+  // likeButton.addEventListener("click", handleLike)
 
 
 
@@ -84,8 +78,8 @@ function addNewToy(toyObj) {
 }
 
 function handleLike (e) {
-  let like= e.target.previousElementSibling.innerText
-  let id = e.target.parentElement.id
+  let likes= e.target.previousElementSibling.innerText
+  let id = e.target.previousElement.id
   let newLike =parseInt(like) + 1
   let toyLikeObj = {
     likes: newLike
@@ -104,17 +98,3 @@ function updateLikes(toyLikeObj, id) {
   .then(toys => updateDomLikes(toys.id, toys.likes))
   .catch(error => console.log(error))
 }
-
-function updateDomLikes(id, likes) {
-  let card = document.getElementById(id);
-  card.querySelector("p").innerText = likes
-}
-
-function deleteToy(id) {
-  fetch (`http://localhost:3000/toys/${id}`, {
-    method: "DELETE"
-  })
-  .then(response => response.json())
-  .then(() => {document.getElementById(id).remove()})
-}
-

@@ -114,7 +114,8 @@ function deleteToy(id) {
   fetch (`http://localhost:3000/toys/${id}`, {
     method: "DELETE"
   })
+  let id = document.getElementById
   .then(response => response.json())
-  .then(() => {document.getElementById(id).remove()})
+  .then(() => {document.id.remove()})
 }
 

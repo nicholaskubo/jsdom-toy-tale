@@ -110,11 +110,11 @@ function updateDomLikes(id, likes) {
   card.querySelector("p").innerText = likes
 }
 
-function deleteToy(id) {
-  fetch (`http://localhost:3000/toys/${id}`, {
-    method: "DELETE"
-  })
-  .then(response => response.json())
-  .then(() => {document.getElementById(id).remove()})
-}
+// function deleteToy(id) {
+//   fetch (`http://localhost:3000/toys/${id}`, {
+//     method: "DELETE"
+//   })
+//   .then(response => response.json())
+//   .then(() => {document.getElementById(id).remove()})
+// }
 

@@ -45,7 +45,6 @@ function postToyData(toys) {
   container.appendChild(card)
 
   likeButton.addEventListener("click", handleLike) 
-  deleteButton.addEventListener("click", deleteToy)
 
 }
 
@@ -110,7 +109,7 @@ function updateDomLikes(id, likes) {
   card.querySelector("p").innerText = likes
 }
 
-function deleteToy(id) {
+function delete(id) {
   fetch (`http://localhost:3000/toys/${id}`, {
     method: "DELETE"
   })

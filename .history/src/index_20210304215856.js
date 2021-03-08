@@ -33,19 +33,15 @@ function postToyData(toys) {
   image.className = "toy-avatar"
   const p = document.createElement("p")
   const likeButton = document.createElement("button")
-  const deleteButton = document.createElement("button")
-  deleteButton.className ="like-btn"
   likeButton.className ="like-btn"
   image.src = toys.image 
   name.textContent = toys.name
-  deleteButton.textContent = "Delete"
   p.textContent = toys.likes
   likeButton.textContent = "Like <3"
-  card.append(name, image, p, likeButton, deleteButton)
+  card.append(name, image, p, likeButton)
   container.appendChild(card)
 
   likeButton.addEventListener("click", handleLike) 
-  deleteButton.addEventListener("click", deleteToy)
 
 }
 
@@ -108,13 +104,5 @@ function updateLikes(toyLikeObj, id) {
 function updateDomLikes(id, likes) {
   let card = document.getElementById(id);
   card.querySelector("p").innerText = likes
-}
-
-function deleteToy(id) {
-  fetch (`http://localhost:3000/toys/${id}`, {
-    method: "DELETE"
-  })
-  .then(response => response.json())
-  .then(() => {document.getElementById(id).remove()})
 }
 

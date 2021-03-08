@@ -111,10 +111,10 @@ function updateDomLikes(id, likes) {
 }
 
 function deleteToy(id) {
-  fetch (`http://localhost:3000/toys/${id}`, {
+  fetch (`http://localhost:3000/toys/`, {
     method: "DELETE"
   })
   .then(response => response.json())
-  .then(() => {document.getElementById(id).remove()})
+  .then((id) => {document.getElementById(id).remove()})
 }
 
